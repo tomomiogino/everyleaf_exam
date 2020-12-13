@@ -32,8 +32,10 @@ class TasksController < ApplicationController
       render :edit
     end
   end
+  
   def destroy
-
+    @task.destroy
+    redirect_to tasks_path, notice: "タスク『#{@task.title}』を削除しました！"
   end
 
   private
