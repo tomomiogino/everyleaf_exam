@@ -5,10 +5,17 @@ class TasksController < ApplicationController
   end
 
   def new
+    @task = Task.new
   end
 
   def create
-
+    @task = Task.new(task_params)
+    if @task.save
+      redirect_to task_path(@task.id), notice: "#{@task.title}を新規登録しました！"
+    else
+      flash.now[:alert] = '登録に失敗しました'
+      render :new
+    end
   end
 
   def show
@@ -18,7 +25,12 @@ class TasksController < ApplicationController
   end
 
   def update
-
+    if @task.update(task_params)
+      redirect_to tasks_path, notice: "タスク『#{@task.title}』を更新しました！"
+    else
+      flash.now[:alert] = '更新に失敗しました'
+      render :edit
+    end
   end
   def destroy
 
