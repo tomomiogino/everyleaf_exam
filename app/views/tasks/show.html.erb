@@ -1,2 +1,30 @@
-<h1>Tasks#show</h1>
-<p>Find me in app/views/tasks/show.html.erb</p>
+<h1>タスク詳細画面</h1>
+<div class="link">
+  <%= link_to '一覧画面へ', tasks_path %>
+</div>
+<table>
+  <tbody class="table show">
+    <tr>
+      <th><%= Task.human_attribute_name(:id) %></th>
+      <td><%= @task.id %></td>
+    </tr>
+    <tr>
+      <th><%= Task.human_attribute_name(:title) %></th>
+      <td><%= @task.title %></td>
+    </tr>
+    <tr>
+      <th><%= Task.human_attribute_name(:content) %></th>
+      <td><%= simple_format(h(@task.content), {}, sanitize: false, wrapper_tag: "div") %></td>
+    </tr>
+    <tr>
+      <th><%= Task.human_attribute_name(:created_at) %></th>
+      <td><%= l @task.created_at %></td>
+    </tr>
+    <tr>
+      <th><%= Task.human_attribute_name(:updated_at) %></th>
+      <td><%= l @task.updated_at %></td>
+    </tr>
+  </tbody>
+</table>
+<%= link_to '編集', edit_task_path %>
+<%= link_to '削除', task_path(@task), method: :delete, data: {confirm: "タスク『#{@task.title}』を削除してよろしいですか？"} %>
