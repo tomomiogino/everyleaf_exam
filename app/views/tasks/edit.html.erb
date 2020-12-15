@@ -1,5 +1,5 @@
-<h2>このタスクを編集する</h2>
+<h1><%= t('tasks.Editing Task') %></h1>
 <div class="link">
-  <%= link_to '一覧画面へ', tasks_path %>
+  <%= link_to t('link.Index'), tasks_path %>
 </div>
 <%= render 'form', post: @task %>
