@@ -11,7 +11,7 @@
   </tr>
   <div class="table item">
     <% @tasks.each do |task| %>
-      <tr>
+      <tr class="task_row">
         <td><%= task.title %></td>
         <td><%= task.content %></td>
         <td><%= l task.created_at %></td>
