@@ -1,6 +1,6 @@
-<h1>タスク詳細画面</h1>
+<h1><%= t('tasks.Show') %></h1>
 <div class="link">
-  <%= link_to '一覧画面へ', tasks_path %>
+  <%= link_to t('link.Index'), tasks_path %>
 </div>
 <table>
   <tbody class="table show">
@@ -26,5 +26,5 @@
     </tr>
   </tbody>
 </table>
-<%= link_to '編集', edit_task_path %>
-<%= link_to '削除', task_path(@task), method: :delete, data: {confirm: "タスク『#{@task.title}』を削除してよろしいですか？"} %>
+<%= link_to t('link.Edit'), edit_task_path %>
+<%= link_to t('link.Destroy'), task_path(@task), method: :delete, data: {confirm: t('message.Are you sure?', title: @task.title)} %>
