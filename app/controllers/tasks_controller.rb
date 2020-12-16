@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   def index
-    @tasks = Task.all
+    @tasks = Task.all.order(created_at: :desc)
   end
 
   def new
@@ -11,9 +11,9 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      redirect_to task_path(@task.id), notice: "#{@task.title}を新規登録しました！"
+      redirect_to task_path(@task.id), notice: t('notice.create', task: @task.title)
     else
-      flash.now[:alert] = '登録に失敗しました'
+      flash.now[:alert] = t('alert.create')
       render :new
     end
   end
@@ -26,16 +26,16 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to tasks_path, notice: "タスク『#{@task.title}』を更新しました！"
+      redirect_to tasks_path, notice: t('notice.update', task: @task.title)
     else
-      flash.now[:alert] = '更新に失敗しました'
+      flash.now[:alert] = t('alert.update')
       render :edit
     end
   end
-  
+
   def destroy
     @task.destroy
-    redirect_to tasks_path, notice: "タスク『#{@task.title}』を削除しました！"
+    redirect_to tasks_path, notice: t('notice.destroy', task: @task.title)
   end
 
   private

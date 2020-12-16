@@ -1,0 +1,21 @@
+<%= form_with(model: @task, local: true) do |f| %>
+  <% if @task.errors.any? %>
+    <div id="error_expalanation">
+      <h2><%= t('errors.template.header', count: @task.errors.count) %></h2>
+      <ul>
+        <% @task.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form_group title">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="form_group content">
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+  <%= f.submit %>
+<% end %>
