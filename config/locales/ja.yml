@@ -223,3 +223,8 @@ ja:
   alert:
     create: "登録に失敗しました"
     update: "更新に失敗しました"
+  task:
+    status:
+      waiting: "未着手"
+      working: "着手中"
+      completed: "完了"

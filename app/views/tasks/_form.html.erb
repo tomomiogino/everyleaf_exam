@@ -21,5 +21,9 @@
     <%= f.label :deadline %>
     <%= f.datetime_field :deadline, max: "9999-12-31 23:59:59" %>
   </div>
+  <div class="form_group status">
+    <%= f.label :status %>
+    <%= f.select :status, Task.statuses.keys.map  { |k| [t("task.status.#{k}"), k] } %>
+  </div>
   <%= f.submit %>
 <% end %>

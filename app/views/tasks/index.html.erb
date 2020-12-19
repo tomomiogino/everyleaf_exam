@@ -16,6 +16,7 @@
       <tr class="task_row">
         <td><%= task.title %></td>
         <td><%= task.content %></td>
+        <td><%= t("task.status.#{task.status}") %></td>
         <td><%= l task.deadline %></td>
         <td><%= l task.created_at %></td>
         <td><%= link_to t('link.Show'), task_path(task) %></td>
