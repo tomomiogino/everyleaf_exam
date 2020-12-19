@@ -2,6 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   def index
     @tasks = Task.all
+    @search_task_params = search_task_params
     if params[:task].present?
       if params[:task][:title].present? && params[:task][:status].present?
         @tasks = Task.where('title LIKE ?', "%#{params[:task][:title]}%").where(status: params[:task][:status])
@@ -59,5 +60,9 @@ class TasksController < ApplicationController
 
   def set_task
     @task = Task.find(params[:id])
+  end
+
+  def search_task_params
+    params.fetch(:task, {}).permit(:title, :status)
   end
 end
