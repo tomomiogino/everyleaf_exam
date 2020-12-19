@@ -5,7 +5,8 @@ class Task < ApplicationRecord
     validates :deadline
   end
   validate :date_not_before_now
-
+  enum status: {waiting: 0, working: 1, completed: 2}
+  
   def date_not_before_now
     errors.add(:deadline, I18n.t('errors.messages.invalid_date')) if deadline.nil? || deadline < DateTime.current
   end
