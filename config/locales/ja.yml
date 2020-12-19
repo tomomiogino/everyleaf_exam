@@ -207,6 +207,8 @@ ja:
     Edit: 編集
     Destroy: 削除
     New Task: タスクを新規作成
+    sort:
+      deadline: 終了期限でソートする
   tasks:
     Editing Task: タスクを編集する
     Index: タスク一覧
