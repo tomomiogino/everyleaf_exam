@@ -1,10 +1,24 @@
 <h1><%= t('tasks.Index') %></h1>
+<%= form_with(model: Task.new, method: :get, local: true) do |f| %>
+  <div class="serch_row">
+    <% if params[:task] %>
+      <%= f.label :title %>
+      <%= f.text_field :title, value: params[:task][:title] %>
+    <% else %>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    <% end %>
+  </div>
+  <%= f.submit 'Search' %>
+  <%= link_to 'Clear', tasks_path(task: nil) %>
+<% end %>
 <%= link_to t('link.New Task'), new_task_path %>
-<%= link_to t('link.sort.deadline'), tasks_path(sort_expired: "true") %>
+<%= link_to t('link.sort.deadline'), request.params.merge(sort_expired: 'true') %>
 <table class="table index">
   <tr>
     <th><%= Task.human_attribute_name(:title) %></th>
     <th><%= Task.human_attribute_name(:content) %></th>
+    <th><%= Task.human_attribute_name(:status) %></th>
     <th><%= Task.human_attribute_name(:deadline) %></th>
     <th><%= Task.human_attribute_name(:created_at) %></th>
     <th></th>
