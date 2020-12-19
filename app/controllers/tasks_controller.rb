@@ -3,15 +3,8 @@ class TasksController < ApplicationController
   def index
     @tasks = Task.all
     @search_task_params = search_task_params
-    if params[:task].present?
-      if params[:task][:title].present? && params[:task][:status].present?
-        @tasks = Task.where('title LIKE ?', "%#{params[:task][:title]}%").where(status: params[:task][:status])
-      elsif params[:task][:status].empty?
-        @tasks = Task.where('title LIKE ?', "%#{params[:task][:title]}%")
-      elsif params[:task][:title].empty?
-        @tasks = Task.where(status: params[:task][:status])
-      end
-    end
+    @tasks = @tasks.serch(@search_task_params)
+    
     if params[:sort_expired].present?
       @tasks = @tasks.order(deadline: :desc)
     else
