@@ -201,12 +201,15 @@ ja:
       default: "%Y/%m/%d %H:%M"
       long: "%Y年%m月%d日(%a) %H時%M分%S秒"
       short: "%m/%d %H:%M"
+  button:
+    Search: 検索
   link:
     Index: 一覧
     Show: 詳細
     Edit: 編集
     Destroy: 削除
     New Task: タスクを新規作成
+    Clear: 解除
     sort:
       deadline: 終了期限でソートする
   tasks:

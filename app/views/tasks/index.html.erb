@@ -8,8 +8,8 @@
     <%= f.label :status %>
     <%= f.select :status, Task.statuses.keys.map { |k| [t("task.status.#{k}"), k] }, { include_blank: true, selected: @search_task_params[:status] } %>
   </div>
-  <%= f.submit 'Search' %>
-  <%= link_to 'Clear', tasks_path %>
+  <%= f.submit t('button.Search') %>
+  <%= link_to t('link.Clear'), tasks_path %>
 <% end %>
 <%= link_to t('link.New Task'), new_task_path %>
 <%= link_to t('link.sort.deadline'), request.params.merge(sort_expired: 'true') %>
