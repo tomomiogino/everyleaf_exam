@@ -17,6 +17,10 @@
       <td><%= simple_format(h(@task.content), {}, sanitize: false, wrapper_tag: "div") %></td>
     </tr>
     <tr>
+      <th><%= Task.human_attribute_name(:deadline) %></th>
+      <td><%= l @task.deadline %></td>
+    </tr>
+    <tr>
       <th><%= Task.human_attribute_name(:created_at) %></th>
       <td><%= l @task.created_at %></td>
     </tr>
