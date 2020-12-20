@@ -13,6 +13,7 @@
 <% end %>
 <%= link_to t('link.New Task'), new_task_path %>
 <%= link_to t('link.sort.deadline'), request.params.merge(sort_expired: 'true') %>
+<%= link_to t('link.sort.priority'), request.params.merge(sort_priority: 'true', sort_expired: nil) %>
 <table class="table index">
   <tr>
     <th><%= Task.human_attribute_name(:title) %></th>

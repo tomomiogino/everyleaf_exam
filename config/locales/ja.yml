@@ -212,6 +212,7 @@ ja:
     Clear: 解除
     sort:
       deadline: 終了期限でソートする
+      priority: 優先度でソートする
   tasks:
     Editing Task: タスクを編集する
     Index: タスク一覧
