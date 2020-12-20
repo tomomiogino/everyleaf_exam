@@ -11,18 +11,18 @@ class Task < ApplicationRecord
     errors.add(:deadline, I18n.t('errors.messages.invalid_date')) if deadline.nil? || deadline < DateTime.current
   end
 
-  scope :serch_title, ->(title) {
+  scope :search_title, ->(title) {
     return if title.blank?
     where('title LIKE ?', "%#{title}%")
   }
 
-  scope :serch_status, ->(status) {
+  scope :search_status, ->(status) {
     return if status.blank?
     where(status: status)
   }
 
-  scope :serch, ->(search_task_params) {
-    serch_title(search_task_params[:title]).
-    serch_status(search_task_params[:status])
+  scope :search, ->(search_task_params) {
+    search_title(search_task_params[:title]).
+    search_status(search_task_params[:status])
   }
 end

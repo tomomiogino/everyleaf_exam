@@ -3,8 +3,8 @@ class TasksController < ApplicationController
   def index
     @tasks = Task.all
     @search_task_params = search_task_params
-    @tasks = @tasks.serch(@search_task_params)
-    
+    @tasks = @tasks.search(@search_task_params)
+    binding.pry
     if params[:sort_expired].present?
       @tasks = @tasks.order(deadline: :desc)
     else
