@@ -3,9 +3,11 @@ class Task < ApplicationRecord
     validates :title, length: { maximum: 100 }
     validates :content, length: { maximum: 300 }
     validates :deadline
+    validates :priority
   end
   validate :date_not_before_now
   enum status: {waiting: 0, working: 1, completed: 2}
+  enum priority: {high: 0, middle: 1, low: 2}
 
   def date_not_before_now
     errors.add(:deadline, I18n.t('errors.messages.invalid_date')) if deadline.nil? || deadline < DateTime.current
