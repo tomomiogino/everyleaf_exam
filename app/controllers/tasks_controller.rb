@@ -4,7 +4,6 @@ class TasksController < ApplicationController
     @tasks = Task.all
     @search_task_params = search_task_params
     @tasks = @tasks.search(@search_task_params)
-    binding.pry
     if params[:sort_expired].present?
       @tasks = @tasks.order(deadline: :desc)
     else
@@ -48,7 +47,7 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:title, :content, :deadline, :status)
+    params.require(:task).permit(:title, :content, :deadline, :status, :priority)
   end
 
   def set_task

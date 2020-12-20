@@ -17,9 +17,10 @@
   <tr>
     <th><%= Task.human_attribute_name(:title) %></th>
     <th><%= Task.human_attribute_name(:content) %></th>
-    <th><%= Task.human_attribute_name(:status) %></th>
     <th><%= Task.human_attribute_name(:deadline) %></th>
     <th><%= Task.human_attribute_name(:created_at) %></th>
+    <th><%= Task.human_attribute_name(:status) %></th>
+    <th><%= Task.human_attribute_name(:priority) %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -29,9 +30,10 @@
       <tr class="task_row">
         <td><%= task.title %></td>
         <td><%= task.content %></td>
-        <td><%= t("task.status.#{task.status}") %></td>
         <td><%= l task.deadline %></td>
         <td><%= l task.created_at %></td>
+        <td><%= t("task.status.#{task.status}") %></td>
+        <td><%= t("task.priority.#{task.priority}") %></td>
         <td><%= link_to t('link.Show'), task_path(task) %></td>
         <td><%= link_to t('link.Edit'), edit_task_path(task) %></td>
         <td><%= link_to t('link.Destroy'), task_path(task), method: :delete, data: {confirm: t('message.Are you sure?', title: task.title)} %></td>

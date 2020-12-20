@@ -24,6 +24,9 @@
   <div class="form_group status">
     <%= f.label :status %>
     <%= f.select :status, Task.statuses.keys.map  { |k| [t("task.status.#{k}"), k] } %>
+    <div class="form_group priority">
+      <%= f.label :priority %>
+      <%= f.select :priority, Task.priorities.keys.map  { |k| [t("task.priority.#{k}"), k] } %>
   </div>
   <%= f.submit %>
 <% end %>
