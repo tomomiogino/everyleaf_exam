@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'タスク管理機能', type: :system do
   let!(:task1) {create(:task, title: 'task_t_1', content: 'task_c_1', deadline: "#{DateTime.current + 1.days}")}
   let!(:task2) {create(:second_task, title: 'task_t_2', content: 'task_c_2', deadline: "#{DateTime.current + 2.days}")}
-  
+
   describe '新規作成機能' do
     context 'タスクを新規作成した場合' do
       it '作成したタスクが表示される' do
@@ -12,11 +12,13 @@ RSpec.describe 'タスク管理機能', type: :system do
         fill_in 'タスク詳細', with: '新規コンテンツ'
         fill_in '終了期限', with: "#{(DateTime.current + 1.days).strftime("%Y/%m/%d%T%H:%M")}"
         select '未着手', from: 'ステータス'
+        select '高', from: '優先度'
         click_button '登録する'
         expect(page).to have_content '新規タイトル'
         expect(page).to have_content '新規コンテンツ'
         expect(page).to have_content "#{(DateTime.current + 1.days).strftime("%Y/%m/%d %H:%M")}"
         expect(page).to have_content '未着手'
+        expect(page).to have_content '高'
       end
     end
   end
@@ -55,9 +57,17 @@ RSpec.describe 'タスク管理機能', type: :system do
         click_link '終了期限でソートする'
         sleep(1)
         task_list = all('.task_row')
-        # binding.irb
         expect(task_list[0]).to have_content 'task_t_2'
         expect(task_list[1]).to have_content 'task_t_1'
+      end
+    end
+    context '優先度でソートするというリンクを押すと' do
+      it '優先度の高い順に並び替えられたタスク一覧が表示される' do
+        click_link '優先度でソートする'
+        sleep(1)
+        task_list = all('.task_row')
+        expect(task_list[0]).to have_content 'task_t_1'
+        expect(task_list[1]).to have_content 'task_t_2'
       end
     end
   end
