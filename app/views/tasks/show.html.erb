@@ -1,30 +1,44 @@
-<h1><%= t('tasks.Show') %></h1>
-<div class="link">
-  <%= link_to t('link.Index'), tasks_path %>
+<div class="container show_item">
+  <h2><%= t('tasks.Show') %></h2>
+  <br>
+  <table class="table">
+    <tbody class="table show">
+      <tr>
+        <th><%= Task.human_attribute_name(:id) %></th>
+        <td><%= @task.id %></td>
+      </tr>
+      <tr>
+        <th><%= Task.human_attribute_name(:title) %></th>
+        <td><%= @task.title %></td>
+      </tr>
+      <tr>
+        <th><%= Task.human_attribute_name(:content) %></th>
+        <td><%= simple_format(h(@task.content), {}, sanitize: false, wrapper_tag: "div") %></td>
+      </tr>
+      <tr>
+        <th><%= Task.human_attribute_name(:status) %></th>
+        <td><%= t("task.status.#{@task.status}") %></td>
+      </tr>
+      <tr>
+        <th><%= Task.human_attribute_name(:priority) %></th>
+        <td><%= t("task.priority.#{@task.priority}") %></td>
+      </tr>
+      <tr>
+        <th><%= Task.human_attribute_name(:deadline) %></th>
+        <td><%= l @task.deadline %></td>
+      </tr>
+      <tr>
+        <th><%= Task.human_attribute_name(:created_at) %></th>
+        <td><%= l @task.created_at %></td>
+      </tr>
+      <tr>
+        <th><%= Task.human_attribute_name(:updated_at) %></th>
+        <td><%= l @task.updated_at %></td>
+      </tr>
+    </tbody>
+  </table>
+<%= link_to t('link.Edit'), edit_task_path, class: 'btn btn-success' %>
+<%= link_to t('link.Destroy'), task_path(@task), class: 'btn btn-danger', method: :delete, data: {confirm: t('message.Are you sure?', title: @task.title)} %>
+<br><br>
+<%= link_to t('link.Index'), tasks_path, class: 'btn btn-info' %>
 </div>
-<table>
-  <tbody class="table show">
-    <tr>
-      <th><%= Task.human_attribute_name(:id) %></th>
-      <td><%= @task.id %></td>
-    </tr>
-    <tr>
-      <th><%= Task.human_attribute_name(:title) %></th>
-      <td><%= @task.title %></td>
-    </tr>
-    <tr>
-      <th><%= Task.human_attribute_name(:content) %></th>
-      <td><%= simple_format(h(@task.content), {}, sanitize: false, wrapper_tag: "div") %></td>
-    </tr>
-    <tr>
-      <th><%= Task.human_attribute_name(:created_at) %></th>
-      <td><%= l @task.created_at %></td>
-    </tr>
-    <tr>
-      <th><%= Task.human_attribute_name(:updated_at) %></th>
-      <td><%= l @task.updated_at %></td>
-    </tr>
-  </tbody>
-</table>
-<%= link_to t('link.Edit'), edit_task_path %>
-<%= link_to t('link.Destroy'), task_path(@task), method: :delete, data: {confirm: t('message.Are you sure?', title: @task.title)} %>

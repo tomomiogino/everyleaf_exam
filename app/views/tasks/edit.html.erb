@@ -1,5 +1,7 @@
-<h1><%= t('tasks.Editing Task') %></h1>
-<div class="link">
-  <%= link_to t('link.Index'), tasks_path %>
+<div class="page_item">
+  <h2><%= t('tasks.Editing Task') %></h2>
+  <br>
+  <%= render 'form', post: @task %>
+  <br>
+  <%= link_to t('link.Index'), tasks_path, class: 'btn btn-info' %>
 </div>
-<%= render 'form', post: @task %>

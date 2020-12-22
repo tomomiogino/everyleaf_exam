@@ -11,12 +11,15 @@
 |  password_digest  |  string  |
 
 ### Task
-|  カラム名  |  データ型  |
-| --------- | -------- |
-|  id       |  integer |
-|  title    |  string  |
-|  content  |  text    |
-|  user_id  |  bigint  |
+|  カラム名   |  データ型  |
+| ---------  | -------- |
+|  id        |  integer |
+|  title     |  string  |
+|  content   |  text    |
+|  deadline  |  datetime|
+|  status    |  integer |
+|  priority  |  integer |
+|  user_id   |  bigint  |
 
 ### Label
 |  カラム名  |  データ型  |

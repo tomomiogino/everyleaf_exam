@@ -132,6 +132,7 @@ ja:
       too_long: は%{count}文字以内で入力してください
       too_short: は%{count}文字以上で入力してください
       wrong_length: は%{count}文字で入力してください
+      invalid_date: は現在以降の日時を指定してください
     template:
       body: 次の項目を確認してください
       header: "%{count}件のエラーが発生しました"
@@ -197,15 +198,21 @@ ja:
       words_connector: "、"
   time:
     formats:
-      default: "%Y/%m/%d %H:%M:%S"
+      default: "%Y/%m/%d %H:%M"
       long: "%Y年%m月%d日(%a) %H時%M分%S秒"
       short: "%m/%d %H:%M"
+  button:
+    Search: 検索
   link:
-    Index: 一覧
+    Index: タスク一覧
     Show: 詳細
     Edit: 編集
     Destroy: 削除
-    New Task: タスクを新規作成
+    New Task: タスク新規作成
+    Clear: 解除
+    sort:
+      deadline: 終了期限でソート
+      priority: 優先度でソート
   tasks:
     Editing Task: タスクを編集する
     Index: タスク一覧
@@ -220,3 +227,12 @@ ja:
   alert:
     create: "登録に失敗しました"
     update: "更新に失敗しました"
+  task:
+    status:
+      waiting: "未着手"
+      working: "着手中"
+      completed: "完了"
+    priority:
+      high: "高"
+      middle: "中"
+      low: "低"
