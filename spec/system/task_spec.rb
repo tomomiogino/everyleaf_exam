@@ -54,7 +54,7 @@ RSpec.describe 'タスク管理機能', type: :system do
     before { visit tasks_path }
     context '終了期限でソートするというリンクを押すと' do
       it '終了期限の降順に並び替えられたタスク一覧が表示される' do
-        click_link '終了期限でソートする'
+        click_link '終了期限でソート'
         sleep(1)
         task_list = all('.task_row')
         expect(task_list[0]).to have_content 'task_t_2'
@@ -63,7 +63,7 @@ RSpec.describe 'タスク管理機能', type: :system do
     end
     context '優先度でソートするというリンクを押すと' do
       it '優先度の高い順に並び替えられたタスク一覧が表示される' do
-        click_link '優先度でソートする'
+        click_link '優先度でソート'
         sleep(1)
         task_list = all('.task_row')
         expect(task_list[0]).to have_content 'task_t_1'
