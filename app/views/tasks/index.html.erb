@@ -1,20 +1,34 @@
-<h1><%= t('tasks.Index') %></h1>
-<%= form_with(model: Task.new, method: :get, local: true) do |f| %>
-  <div class="serch_row">
+<h2><%= t('tasks.Index') %></h2>
+<%= form_with(model: Task.new, method: :get, local: true, class: 'form-inline') do |f| %>
+  <div class="form-group">
     <%= f.label :title %>
-    <%= f.text_field :title, value: @search_task_params[:title] %>
+    <%= f.text_field :title, value: @search_task_params[:title], class: 'form-control' %>
   </div>
-  <div class="serch_row">
+  <div class="form-group">
     <%= f.label :status %>
-    <%= f.select :status, Task.statuses.keys.map { |k| [t("task.status.#{k}"), k] }, { include_blank: true, selected: @search_task_params[:status] } %>
+    <%= f.select :status, Task.statuses.keys.map { |k| [t("task.status.#{k}"), k] }, { include_blank: true, selected: @search_task_params[:status] }, {class: "form-control"} %>
   </div>
-  <%= f.submit t('button.Search') %>
-  <%= link_to t('link.Clear'), tasks_path %>
+  <div class="form-group">
+    <%= f.submit t('button.Search'), class: 'btn btn-info' %>
+    <%= link_to t('link.Clear'), request.params.merge(task: nil), class: 'btn btn-default btn-xs' %>
+  </div>
 <% end %>
-<%= link_to t('link.New Task'), new_task_path %>
-<%= link_to t('link.sort.deadline'), request.params.merge(sort_expired: 'true') %>
-<%= link_to t('link.sort.priority'), request.params.merge(sort_priority: 'true', sort_expired: nil) %>
+<br>
+<div class="btn_new">
+  <%= link_to t('link.New Task'), new_task_path, class: 'btn btn-primary' %>
+</div>
 <table class="table index">
+  <tr>
+    <th></th>
+    <th></th>
+    <th><%= link_to t('link.sort.deadline'), request.params.merge(sort_expired: 'true'), class: 'btn btn-warning btn-xs' %></th>
+    <th></th>
+    <th></th>
+    <th><%= link_to t('link.sort.priority'), request.params.merge(sort_priority: 'true', sort_expired: nil), class: 'btn btn-warning btn-xs' %></th>
+    <th><%= link_to t('link.Clear'), request.params.merge(sort_priority: nil, sort_expired: nil), class: 'btn btn-default btn-xs' %></th>
+    <th></th>
+    <th></th>
+  </tr>
   <tr>
     <th><%= Task.human_attribute_name(:title) %></th>
     <th><%= Task.human_attribute_name(:content) %></th>
@@ -35,12 +49,14 @@
         <td><%= l task.created_at %></td>
         <td><%= t("task.status.#{task.status}") %></td>
         <td><%= t("task.priority.#{task.priority}") %></td>
-        <td><%= link_to t('link.Show'), task_path(task) %></td>
-        <td><%= link_to t('link.Edit'), edit_task_path(task) %></td>
-        <td><%= link_to t('link.Destroy'), task_path(task), method: :delete, data: {confirm: t('message.Are you sure?', title: task.title)} %></td>
+        <td><%= link_to t('link.Show'), task_path(task), class: 'btn btn-primary btn-sm' %></td>
+        <td><%= link_to t('link.Edit'), edit_task_path(task), class: 'btn btn-success btn-sm' %></td>
+        <td><%= link_to t('link.Destroy'), task_path(task), class: 'btn btn-danger btn-sm', method: :delete, data: {confirm: t('message.Are you sure?', title: task.title)} %></td>
       </tr>
     <% end %>
-    <%= paginate @tasks %>
-    <%= page_entries_info @tasks %>
   </div>
+  <%= page_entries_info @tasks %>
 </table>
+<div class="page">
+  <%= paginate @tasks %>
+</div>

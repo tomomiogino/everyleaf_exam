@@ -1,32 +1,60 @@
-<%= form_with(model: @task, local: true) do |f| %>
+<div class="form-horizontal" role="form">
+  <%= form_with(model: @task, local: true) do |f| %>
   <% if @task.errors.any? %>
-    <div id="error_expalanation">
-      <h2><%= t('errors.template.header', count: @task.errors.count) %></h2>
-      <ul>
-        <% @task.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+    <div id="error_explanation">
+      <div class="alert alert-danger">
+        <h2><%= t('errors.template.header', count: @task.errors.count) %></h2>
+        <ul>
+          <% @task.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
-  <div class="form_group title">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+  <div class="form-group title row">
+    <div class="col-xs-3 control-label">
+      <%= f.label :title %>
+    </div>
+    <div class="col-xs-7">
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
   </div>
-  <div class="form_group content">
-    <%= f.label :content %>
-    <%= f.text_area :content %>
+  <div class="form-group content row" >
+    <div class="col-xs-3 control-label">
+      <%= f.label :content %>
+    </div>
+    <div class="col-xs-7">
+      <%= f.text_area :content, class: 'form-control' %>
+    </div>
   </div>
-  <div class="form_group deadline">
-    <%= f.label :deadline %>
-    <%= f.datetime_field :deadline, max: "9999-12-31 23:59:59" %>
+  <div class="form-group deadline row">
+    <div class="col-xs-3 control-label">
+      <%= f.label :deadline %>
+    </div>
+    <div class="col-xs-7">
+      <%= f.datetime_field :deadline, class: 'form-control', max: "9999-12-31 23:59:59" %>
+    </div>
   </div>
-  <div class="form_group status">
-    <%= f.label :status %>
-    <%= f.select :status, Task.statuses.keys.map  { |k| [t("task.status.#{k}"), k] } %>
-    <div class="form_group priority">
+  <div class="form-group status row">
+    <div class="col-xs-3 control-label">
+      <%= f.label :status %>
+    </div>
+    <div class="col-xs-3">
+      <%= f.select :status, Task.statuses.keys.map  { |k| [t("task.status.#{k}"), k] }, {}, {class: "form-control"} %>
+    </div>
+  </div>
+  <div class="form-group priority row">
+    <div class="col-xs-3 control-label">
       <%= f.label :priority %>
-      <%= f.select :priority, Task.priorities.keys.map  { |k| [t("task.priority.#{k}"), k] } %>
+    </div>
+    <div class="col-xs-3">
+      <%= f.select :priority, Task.priorities.keys.map  { |k| [t("task.priority.#{k}"), k] }, {}, {class: "form-control"} %>
+    </div>
   </div>
-  <%= f.submit %>
-<% end %>
+  <br>
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-primary btn-lg'%>
+  </div>
+  <% end %>
+</div>

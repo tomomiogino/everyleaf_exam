@@ -204,15 +204,15 @@ ja:
   button:
     Search: 検索
   link:
-    Index: 一覧
+    Index: タスク一覧
     Show: 詳細
     Edit: 編集
     Destroy: 削除
-    New Task: タスクを新規作成
+    New Task: タスク新規作成
     Clear: 解除
     sort:
-      deadline: 終了期限でソートする
-      priority: 優先度でソートする
+      deadline: 終了期限でソート
+      priority: 優先度でソート
   tasks:
     Editing Task: タスクを編集する
     Index: タスク一覧
