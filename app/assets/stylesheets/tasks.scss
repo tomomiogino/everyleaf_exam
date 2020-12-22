@@ -6,7 +6,8 @@ html {
 }
 body {
   padding-top: 50px;
-  padding-bottom: 50px;
+  padding-bottom: 60px;
+  min-height: 100%;
 }
 li {
   list-style: none;
@@ -20,7 +21,14 @@ a {
 form {
   width: 100%;
 }
-.navbar-footer {
+.footer {
+  width: 100%;
+  background-color: #fff0fd;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 0;
+}
+.footer_content {
   text-align: center;
 }
 .navbar {
@@ -48,4 +56,9 @@ form {
 }
 .show_item tbody {
   width: auto;
+}
+.page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
