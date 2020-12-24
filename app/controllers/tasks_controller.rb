@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :authenticate_user
   before_action :correct_user_with_task, only: [:show, :edit, :update, :destroy]
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks
     @search_task_params = search_task_params
     @tasks = @tasks.search(@search_task_params)
     if params[:sort_expired].present?
