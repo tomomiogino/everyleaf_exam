@@ -21,9 +21,36 @@
       </tr>
     </tbody>
   </table>
-  <br><br>
   <%= link_to t('link.Edit'), edit_admin_user_path(@user), class: 'btn btn-success' %>
   <%= link_to t('link.Destroy'), admin_user_path(@user), class: 'btn btn-danger', method: :delete, data: {confirm: t('message.user.Are you sure?', user: @user.name)} %>
-  <br><br>
   <%= link_to t('link.user.Index'), admin_users_path, class: 'btn btn-info' %>
+  <br><br>
+  <table class="table index">
+    <tr>
+      <th><%= Task.human_attribute_name(:title) %></th>
+      <th><%= Task.human_attribute_name(:content) %></th>
+      <th><%= Task.human_attribute_name(:deadline) %></th>
+      <th><%= Task.human_attribute_name(:created_at) %></th>
+      <th><%= Task.human_attribute_name(:status) %></th>
+      <th><%= Task.human_attribute_name(:priority) %></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <div class="table item">
+      <% @user.tasks.each do |task| %>
+        <tr class="task_row">
+          <td><%= task.title %></td>
+          <td><%= task.content %></td>
+          <td><%= l task.deadline %></td>
+          <td><%= l task.created_at %></td>
+          <td><%= t("task.status.#{task.status}") %></td>
+          <td><%= t("task.priority.#{task.priority}") %></td>
+          <td><%= link_to t('link.Show'), task_path(task), class: 'btn btn-primary btn-sm' %></td>
+          <td><%= link_to t('link.Edit'), edit_task_path(task), class: 'btn btn-success btn-sm' %></td>
+          <td><%= link_to t('link.Destroy'), task_path(task), class: 'btn btn-danger btn-sm', method: :delete, data: {confirm: t('message.Are you sure?', title: task.title)} %></td>
+        </tr>
+      <% end %>
+    </div>
+  </table>
 </div>
