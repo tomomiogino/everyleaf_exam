@@ -1,0 +1,29 @@
+<div class="container show_item">
+  <h2><%= t('users.Show User', user: @user.name) %></h2>
+  <br><br>
+  <table class="table">
+    <tbody class="table show">
+      <tr>
+        <th><%= User.human_attribute_name(:id) %></th>
+        <td><%= @user.id %></td>
+      </tr>
+      <tr>
+        <th><%= User.human_attribute_name(:name) %></th>
+        <td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <th><%= User.human_attribute_name(:email) %></th>
+        <td><%= @user.email %></td>
+      </tr>
+      <tr>
+        <th><%= User.human_attribute_name(:admin) %></th>
+        <td><%= t("admin.#{@user.admin}") %></td>
+      </tr>
+    </tbody>
+  </table>
+  <br><br>
+  <%= link_to t('link.Edit'), edit_admin_user_path(@user), class: 'btn btn-success' %>
+  <%= link_to t('link.Destroy'), admin_user_path(@user), class: 'btn btn-danger', method: :delete, data: {confirm: t('message.user.Are you sure?', user: @user.name)} %>
+  <br><br>
+  <%= link_to t('link.user.Index'), admin_users_path, class: 'btn btn-info' %>
+</div>

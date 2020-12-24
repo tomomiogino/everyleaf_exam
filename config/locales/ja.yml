@@ -219,6 +219,7 @@ ja:
     user:
       New: 新規ユーザー登録
       not have an account: ユーザー登録がまだの方はこちら
+      Index: ユーザー一覧
   tasks:
     Editing Task: タスクを編集する
     Index: タスク一覧
@@ -227,18 +228,28 @@ ja:
   users:
     New User: 新規ユーザー登録
     Show User: "%{user}さんのページ"
+    Create User: ユーザー新規作成
+    Edit User: "%{user}さんの登録内容を編集する"
+    Index: ユーザー一覧
   sessions:
     New Session: ログイン
     email: メールアドレス
     password: パスワード
   message:
     Are you sure?: "タスク『%{title}』を本当に削除してよろしいですか？"
+    user:
+      Are you sure?: "ユーザー『%{user}』を本当に削除してよろしいですか？"
   notice:
     create: "タスク『%{task}』を新規登録しました！"
     update: "タスク『%{task}』を更新しました！"
     destroy: "タスク『%{task}』を削除しました！"
     user:
       create: "%{user}さん、ユーザー登録が完了しました！"
+    admin:
+      user:
+        create: "ユーザー『%{user}さん』を登録しました！"
+        update: "ユーザー『%{user}さん』を更新しました！"
+        destroy: "ユーザー『%{user}さん』を削除しました！"
   alert:
     create: "登録に失敗しました"
     update: "更新に失敗しました"
@@ -263,3 +274,6 @@ ja:
       high: "高"
       middle: "中"
       low: "低"
+  admin:
+    true: あり
+    false: なし
