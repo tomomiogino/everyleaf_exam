@@ -19,6 +19,9 @@
   </table>
   <br><br>
   <%= link_to t('link.New Task'), new_task_path, class: 'btn btn-primary' %>
-
   <%= link_to t('link.Index'), tasks_path, class: 'btn btn-info' %>
+  <br><br>
+  <% if current_user.admin? %>
+    <%= link_to t('link.user.Index'), admin_users_path, class: 'btn btn-success' %>
+  <% end %>
 </div>

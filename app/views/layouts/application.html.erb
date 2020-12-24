@@ -25,7 +25,7 @@
           <ul class="nav navbar-nav navbar-right">
             <% if logged_in? %>
               <li><%= link_to current_user.name, user_path(current_user.id) %></li>
-              <% if current_user.admin %>
+              <% if current_user.admin? %>
                 <li><%= link_to t('link.user.Index'), admin_users_path %></li>
               <% end %>
               <li><%= link_to t('link.Index'), tasks_path %></li>
