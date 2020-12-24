@@ -11,4 +11,8 @@ module SessionsHelper
   def restrict_login_user
     redirect_to tasks_path, flash: {danger: t('alert.users.logged in')} if logged_in?
   end
+
+  def ensure_correct_user
+    redirect_to tasks_path, flash: {danger: t('alert.users.Another user')} if current_user.id != params[:id].to_i
+  end
 end

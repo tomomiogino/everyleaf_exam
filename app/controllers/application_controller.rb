@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
   def authenticate_user
     redirect_to new_session_path, flash: {danger: t('alert.sessions.login is needed')} unless logged_in?
   end
-  
-  def ensure_correct_user
-    redirect_to tasks_path, flash: {danger: t('alert.users.Another user')} if current_user.id != params[:id].to_i
+
+  def correct_user_with_task
+    redirect_to tasks_path, flash: {danger: t('alert.users.Another user')} if current_user.id != Task.find(params[:id].to_i).user_id
   end
 end
