@@ -1,10 +1,13 @@
 class Task < ApplicationRecord
+  belongs_to :user
+  
   with_options presence: true do
     validates :title, length: { maximum: 100 }
     validates :content, length: { maximum: 300 }
     validates :deadline
     validates :priority
   end
+
   validate :date_not_before_now
   enum status: {waiting: 0, working: 1, completed: 2}
   enum priority: {high: 0, middle: 1, low: 2}
