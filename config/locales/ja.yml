@@ -133,6 +133,7 @@ ja:
       too_short: は%{count}文字以上で入力してください
       wrong_length: は%{count}文字で入力してください
       invalid_date: は現在以降の日時を指定してください
+      last_admin_user: がいなくなってしまうので実行できません
     template:
       body: 次の項目を確認してください
       header: "%{count}件のエラーが発生しました"
@@ -260,6 +261,7 @@ ja:
     users:
       create: "アカウント作成に失敗しました"
       update: "アカウント更新に失敗しました"
+      destroy: "アカウント削除に失敗しました 管理者がいなくなってしまうので実行できません"
       logged in: "ログイン済です"
       Another user: "アクセス権限がありません"
   success:

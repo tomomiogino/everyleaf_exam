@@ -7,4 +7,19 @@ class User < ApplicationRecord
   before_validation {email.downcase!}
   has_secure_password
   has_many :tasks, dependent: :destroy
+
+  before_update :last_admin_user_update?
+  before_destroy :last_admin_user_destroy?
+
+  def last_admin_user_update?
+    if User.where(admin: true).count == 1
+      errors.add(:admin, I18n.t('errors.messages.last_admin_user'))
+      throw(:abort)
+    end
+  end
+
+  def last_admin_user_destroy?
+    throw(:abort) if User.where(admin: true).count == 1 && self.admin
+    errors.add(:admin, I18n.t('errors.messages.last_admin_user'))
+  end
 end
