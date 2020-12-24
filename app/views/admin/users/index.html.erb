@@ -8,6 +8,7 @@
     <th><%= User.human_attribute_name(:name) %></th>
     <th><%= User.human_attribute_name(:email) %></th>
     <th><%= User.human_attribute_name(:admin) %></th>
+    <th><%= t('users.task_count') %></th>
     <th><%= User.human_attribute_name(:created_at) %></th>
     <th><%= User.human_attribute_name(:updated_at) %></th>
 
@@ -18,6 +19,8 @@
         <td><%= user.name %></td>
         <td><%= user.email %></td>
         <td><%= t("admin.#{user.admin}") %></td>
+        <td><%= user.tasks.count %></td>
+
         <td><%= l user.created_at %></td>
         <td><%= l user.updated_at %></td>
         <td><%= link_to t('link.Show'), admin_user_path(user), class: 'btn btn-primary btn-sm' %></td>

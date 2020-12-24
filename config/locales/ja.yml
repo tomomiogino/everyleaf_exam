@@ -231,6 +231,7 @@ ja:
     Create User: ユーザー新規作成
     Edit User: "%{user}さんの登録内容を編集する"
     Index: ユーザー一覧
+    task_count: タスク数
   sessions:
     New Session: ログイン
     email: メールアドレス
