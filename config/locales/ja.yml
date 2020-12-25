@@ -204,6 +204,7 @@ ja:
       short: "%m/%d %H:%M"
   button:
     Search: 検索
+    login: ログインする
   link:
     Index: タスク一覧
     Show: 詳細
@@ -280,3 +281,4 @@ ja:
   admin:
     true: あり
     false: なし
+    role: 管理者権限

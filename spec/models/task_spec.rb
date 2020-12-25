@@ -23,9 +23,10 @@ RSpec.describe 'タスクモデル機能', type: :model do
   end
 
   describe '検索機能' do
-    let!(:task1) { create(:task, title: 'サンプルa', status: 0) }
-    let!(:task2) { create(:second_task, title: "sample", status: 1) }
-    let!(:task3) { create(:task, title: 'サンプルb', status: 1) }
+    let!(:user1) { create(:user) }
+    let!(:task1) { create(:task, title: 'サンプルa', status: 0, user: user1) }
+    let!(:task2) { create(:second_task, title: "sample", status: 1, user: user1) }
+    let!(:task3) { create(:task, title: 'サンプルb', status: 1, user: user1) }
     context 'scopeメソッドでタイトルのあいまい検索をした場合' do
       it "検索キーワードを含むタスクが絞り込まれる" do
         expect(Task.search_title('サンプル')).to include(task1)
