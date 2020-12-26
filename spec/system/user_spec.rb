@@ -24,6 +24,7 @@ RSpec.describe 'ユーザー管理機能', type: :system do
       end
     end
   end
+
   describe 'セッション機能' do
     context 'ログイン画面の入力情報がユーザーの登録情報と一致した場合' do
       it 'ログインする' do
@@ -60,6 +61,7 @@ RSpec.describe 'ユーザー管理機能', type: :system do
       end
     end
   end
+  
   describe '管理画面のテスト' do
     before do
       visit new_session_path

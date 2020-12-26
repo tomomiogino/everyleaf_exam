@@ -7,6 +7,7 @@ FactoryBot.define do
     priority {0}
     user
   end
+  
   factory :second_task, class: Task do
     title { 'second_test_title' }
     content { 'second_test_content' }

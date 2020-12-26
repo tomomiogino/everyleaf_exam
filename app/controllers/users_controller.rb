@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user, only: [:show]
   before_action :ensure_correct_user, only: [:show]
   before_action :restrict_login_user, only: [:new, :create]
+  
   def new
     @user = User.new
   end
