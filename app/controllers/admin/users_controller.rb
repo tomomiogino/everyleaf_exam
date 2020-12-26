@@ -21,13 +21,9 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  def show
+  def show; end
 
-  end
-
-  def edit
-
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)
