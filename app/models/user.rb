@@ -8,17 +8,17 @@ class User < ApplicationRecord
   has_secure_password
   has_many :tasks, dependent: :destroy
 
-  after_update :last_admin_user_update?
-  before_destroy :last_admin_user_destroy?
+  after_update :forbid_last_admin_update
+  before_destroy :forbid_last_admin_destroy
 
-  def last_admin_user_update?
+  def forbid_last_admin_update
     if User.where(admin: true).count < 1
       errors.add(:admin, I18n.t('errors.messages.last_admin_user'))
       raise ActiveRecord::Rollback
     end
   end
 
-  def last_admin_user_destroy?
+  def forbid_last_admin_destroy
     throw(:abort) if User.where(admin: true).count == 1 && self.admin
     errors.add(:admin, I18n.t('errors.messages.last_admin_user'))
   end
