@@ -18,6 +18,8 @@ gem 'turbolinks', '~> 5'
 # Backend
 gem 'jbuilder', '~> 2.5'
 gem 'kaminari'
+gem 'bcrypt', '3.1.11'
+gem 'faker'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

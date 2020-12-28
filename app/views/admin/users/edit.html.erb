@@ -1,0 +1,7 @@
+<div class="form-horizontal" role="form">
+  <h2><%= t('users.Edit User', user: @user.name) %></h2>
+  <br>
+  <%= render 'form', locals: {user: @user} %>
+  <br><br>
+  <%= link_to t('link.user.Index'), admin_users_path, class: 'btn btn-info' %>
+</div>

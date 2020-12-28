@@ -23,8 +23,18 @@
         </div>
         <div id="gnavi" class="collapse navbar-collapse justify-content-end">
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to t('link.New Task'), new_task_path %></li>
-            <li><%= link_to t('link.Index'), tasks_path %></li>
+            <% if logged_in? %>
+              <li><%= link_to current_user.name, user_path(current_user.id) %></li>
+              <% if current_user.admin? %>
+                <li><%= link_to t('link.user.Index'), admin_users_path %></li>
+              <% end %>
+              <li><%= link_to t('link.Index'), tasks_path %></li>
+              <li><%= link_to t('link.New Task'), new_task_path %></li>
+              <li><%= link_to t('link.session.Destroy'), session_path(current_user.id), method: :delete %></li>
+            <% else %>
+              <li><%= link_to t('link.user.New'), new_user_path %></li>
+              <li><%= link_to t('link.session.New'), new_session_path %></li>
+            <% end %>
           </ul>
         </div>
       </div>

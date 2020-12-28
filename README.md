@@ -3,12 +3,13 @@
 ## テーブルスキーマ
 
 ### User
-|  カラム名　　　　　  |  データ型  |
+|  カラム名　　　　　  |  データ型 |
 | ----------------- | -------- |
 |  id               |  integer |
 |  name             |  string  |
 |  email 　　　　　　 |  string  |
 |  password_digest  |  string  |
+|  admin 　　　　　　 |  boolean |
 
 ### Task
 |  カラム名   |  データ型  |

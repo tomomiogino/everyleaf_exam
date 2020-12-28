@@ -133,6 +133,7 @@ ja:
       too_short: は%{count}文字以上で入力してください
       wrong_length: は%{count}文字で入力してください
       invalid_date: は現在以降の日時を指定してください
+      last_admin_user: がいなくなってしまうので実行できません
     template:
       body: 次の項目を確認してください
       header: "%{count}件のエラーが発生しました"
@@ -203,6 +204,7 @@ ja:
       short: "%m/%d %H:%M"
   button:
     Search: 検索
+    login: ログインする
   link:
     Index: タスク一覧
     Show: 詳細
@@ -213,20 +215,60 @@ ja:
     sort:
       deadline: 終了期限でソート
       priority: 優先度でソート
+    session:
+      New: ログイン
+      Destroy: ログアウト
+    user:
+      New: 新規ユーザー登録
+      not have an account: ユーザー登録がまだの方はこちら
+      Index: ユーザー一覧
   tasks:
     Editing Task: タスクを編集する
     Index: タスク一覧
     New Task: タスクを新規作成する
     Show: タスク詳細
+  users:
+    New User: 新規ユーザー登録
+    Show User: "%{user}さんのページ"
+    Create User: ユーザー新規作成
+    Edit User: "%{user}さんの登録内容を編集する"
+    Index: ユーザー一覧
+    task_count: タスク数
+  sessions:
+    New Session: ログイン
+    email: メールアドレス
+    password: パスワード
   message:
     Are you sure?: "タスク『%{title}』を本当に削除してよろしいですか？"
+    user:
+      Are you sure?: "ユーザー『%{user}』を本当に削除してよろしいですか？"
   notice:
     create: "タスク『%{task}』を新規登録しました！"
     update: "タスク『%{task}』を更新しました！"
     destroy: "タスク『%{task}』を削除しました！"
+    user:
+      create: "%{user}さん、ユーザー登録が完了しました！"
+    admin:
+      user:
+        create: "ユーザー『%{user}さん』を登録しました！"
+        update: "ユーザー『%{user}さん』を更新しました！"
+        destroy: "ユーザー『%{user}さん』を削除しました！"
   alert:
     create: "登録に失敗しました"
     update: "更新に失敗しました"
+    sessions:
+      create: "ログインに失敗しました"
+      login is needed: "ログインしてください"
+    users:
+      create: "アカウント作成に失敗しました"
+      update: "アカウント更新に失敗しました"
+      destroy: "アカウント削除に失敗しました 管理者がいなくなってしまうので実行できません"
+      logged in: "ログイン済です"
+      Another user: "アクセス権限がありません"
+  success:
+    sessions:
+      create: "ログインしました！"
+      destroy: "ログアウトしました！"
   task:
     status:
       waiting: "未着手"
@@ -236,3 +278,7 @@ ja:
       high: "高"
       middle: "中"
       low: "低"
+  admin:
+    true: あり
+    false: なし
+    role: 管理者権限

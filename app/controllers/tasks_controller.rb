@@ -1,7 +1,10 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user
+  before_action :correct_user_with_task, only: [:show, :edit, :update, :destroy]
+  
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks
     @search_task_params = search_task_params
     @tasks = @tasks.search(@search_task_params)
     if params[:sort_expired].present?
@@ -19,7 +22,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
     if @task.save
       redirect_to task_path(@task.id), flash: {success: t('notice.create', task: @task.title)}
     else
@@ -28,11 +31,9 @@ class TasksController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @task.update(task_params)

@@ -1,9 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe 'タスク管理機能', type: :system do
-  let!(:task1) {create(:task, title: 'task_t_1', content: 'task_c_1', deadline: "#{DateTime.current + 1.days}")}
-  let!(:task2) {create(:second_task, title: 'task_t_2', content: 'task_c_2', deadline: "#{DateTime.current + 2.days}")}
+  let!(:user1) { create(:user) }
+  let!(:task1) {create(:task, title: 'task_t_1', content: 'task_c_1', deadline: "#{DateTime.current + 1.days}", user: user1)}
+  let!(:task2) {create(:second_task, title: 'task_t_2', content: 'task_c_2', deadline: "#{DateTime.current + 2.days}", user: user1)}
 
+  before do
+    visit new_session_path
+    fill_in 'メールアドレス', with: "test1@example.com"
+    fill_in 'パスワード', with: "123456"
+    click_button 'ログインする'
+  end
+  
   describe '新規作成機能' do
     context 'タスクを新規作成した場合' do
       it '作成したタスクが表示される' do
@@ -74,10 +82,10 @@ RSpec.describe 'タスク管理機能', type: :system do
 
   describe '検索機能' do
     before do
-      create(:task, title: "サンプルa", status: 0)
-      create(:second_task, title: "sample", status: 1)
-      create(:task, title: "サンプルb", status: 1)
       visit tasks_path
+      create(:task, title: "サンプルa", status: 0, user: user1)
+      create(:second_task, title: "sample", status: 1, user: user1)
+      create(:task, title: "サンプルb", status: 1, user: user1)
     end
     context 'タイトルであいまい検索をした場合' do
       it "検索キーワードを含むタスクで絞り込まれる" do

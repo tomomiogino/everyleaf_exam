@@ -1,0 +1,27 @@
+<div class="container show_item">
+  <h2><%= t('users.Show User', user: @user.name) %></h2>
+  <br><br>
+  <table class="table">
+    <tbody class="table show">
+      <tr>
+        <th><%= User.human_attribute_name(:id) %></th>
+        <td><%= @user.id %></td>
+      </tr>
+      <tr>
+        <th><%= User.human_attribute_name(:name) %></th>
+        <td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <th><%= User.human_attribute_name(:email) %></th>
+        <td><%= @user.email %></td>
+      </tr>
+    </tbody>
+  </table>
+  <br><br>
+  <%= link_to t('link.New Task'), new_task_path, class: 'btn btn-primary' %>
+  <%= link_to t('link.Index'), tasks_path, class: 'btn btn-info' %>
+  <br><br>
+  <% if current_user.admin? %>
+    <%= link_to t('link.user.Index'), admin_users_path, class: 'btn btn-success' %>
+  <% end %>
+</div>
