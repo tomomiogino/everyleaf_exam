@@ -52,6 +52,24 @@
       <%= f.select :priority, Task.priorities.keys.map  { |k| [t("task.priority.#{k}"), k] }, {}, {class: "form-control"} %>
     </div>
   </div>
+  <div class="form-inline priority row">
+    <div class="col-xs-3 control-label">
+      <%= f.label :label %>
+    </div>
+    <div class="col-xs-7">
+      <% current_user.labels.each do |label| %>
+        <div class="checkbox pull-left">
+          <% if action_name == 'new' || action_name == 'create' %>
+            <%= f.check_box :label_ids, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false, class: 'form-check-input'}, label[:id], "" %>
+            <label class="form-check-label label_item"><%= label.name %></label>
+          <% elsif action_name == 'edit' || action_name == 'update' %>
+            <%= f.check_box :label_ids, { multiple: true, checked: @task.label_ids.include?(label.id), disabled: label[:disabled], include_hidden: false, class: 'form-check-input'}, label[:id], "" %>
+            <label class="form-check-label label_item"><%= label.name %></label>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
   <br>
   <div class="form-group">
     <%= f.submit class: 'btn btn-primary btn-lg'%>
