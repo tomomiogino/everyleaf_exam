@@ -28,14 +28,16 @@
     <th><%= link_to t('link.Clear'), request.params.merge(sort_priority: nil, sort_expired: nil), class: 'btn btn-default btn-xs' %></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
   <tr>
-    <th><%= Task.human_attribute_name(:title) %></th>
-    <th><%= Task.human_attribute_name(:content) %></th>
-    <th><%= Task.human_attribute_name(:deadline) %></th>
-    <th><%= Task.human_attribute_name(:created_at) %></th>
-    <th><%= Task.human_attribute_name(:status) %></th>
-    <th><%= Task.human_attribute_name(:priority) %></th>
+    <th class="text-center"><%= Task.human_attribute_name(:title) %></th>
+    <th class="text-center"><%= Task.human_attribute_name(:content) %></th>
+    <th class="text-center"><%= Task.human_attribute_name(:deadline) %></th>
+    <th class="text-center"><%= Task.human_attribute_name(:created_at) %></th>
+    <th class="text-center"><%= Task.human_attribute_name(:status) %></th>
+    <th class="text-center"><%= Task.human_attribute_name(:priority) %></th>
+    <th><%= Label.human_attribute_name(:name) %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -43,12 +45,19 @@
   <div class="table item">
     <% @tasks.each do |task| %>
       <tr class="task_row">
-        <td><%= task.title %></td>
-        <td><%= task.content %></td>
-        <td><%= l task.deadline %></td>
-        <td><%= l task.created_at %></td>
-        <td><%= t("task.status.#{task.status}") %></td>
-        <td><%= t("task.priority.#{task.priority}") %></td>
+        <td class="text-center"><%= task.title %></td>
+        <td class="text-center"><%= task.content %></td>
+        <td class="text-center"><%= task.deadline.strftime('%Y/%m/%d') %></td>
+        <td class="text-center"><%= l task.created_at %></td>
+        <td class="text-center"><%= t("task.status.#{task.status}") %></td>
+        <td class="text-center"><%= t("task.priority.#{task.priority}") %></td>
+        <td>
+          <ul class="list-inline">
+            <% task.labels.each do |label| %>
+              <li class="label_item"><%= label.name %></li>
+            <% end %>
+          </ul>
+        </td>
         <td><%= link_to t('link.Show'), task_path(task), class: 'btn btn-primary btn-sm' %></td>
         <td><%= link_to t('link.Edit'), edit_task_path(task), class: 'btn btn-success btn-sm' %></td>
         <td><%= link_to t('link.Destroy'), task_path(task), class: 'btn btn-danger btn-sm', method: :delete, data: {confirm: t('message.Are you sure?', title: task.title)} %></td>
