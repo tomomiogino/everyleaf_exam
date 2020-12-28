@@ -16,7 +16,8 @@ RSpec.describe 'タスクモデル機能', type: :model do
     end
     context 'タスクのタイトルと詳細に内容が記載されている場合' do
       it 'バリデーションが通る' do
-        task = Task.new(title: 'テストt', content: 'テストc', deadline: "#{DateTime.current + 1.days}", status: 0)
+        user = User.new(name: 'test', email: 'xx@example.com', password: '000000')
+        task = Task.new(title: 'テストt', content: 'テストc', deadline: "#{DateTime.current + 1.days}", status: 0, priority: 0, user: user)
         expect(task).to be_valid
       end
     end
