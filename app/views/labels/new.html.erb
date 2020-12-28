@@ -1,0 +1,7 @@
+<div class="page_item">
+  <h2><%= t('labels.New Label') %></h2>
+  <br>
+  <%= render 'form', post: @label %>
+  <br>
+  <%= link_to t('link.label.Index'), labels_path, class: 'btn btn-info' %>
+</div>

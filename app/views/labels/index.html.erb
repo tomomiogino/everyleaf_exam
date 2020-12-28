@@ -1,0 +1,29 @@
+<h2><%= t('labels.Index') %></h2>
+<br>
+<div class="btn_new">
+  <%= link_to t('link.label.New'), new_label_path, class: 'btn btn-primary' %>
+</div>
+<table class="table index">
+  <tr>
+    <th><%= Label.human_attribute_name(:name) %></th>
+    <th class="text-center"><%= Label.human_attribute_name(:created_at) %></th>
+    <th class="text-center"><%= Label.human_attribute_name(:updated_at) %></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <div class="table item">
+    <% @labels.each do |label| %>
+      <tr class="task_row">
+        <td><p class="label_item"><%= label.name %></p></td>
+        <td class="text-center"><%= l label.created_at %></td>
+        <td class="text-center"><%= l label.updated_at %></td>
+        <td><%= link_to t('link.Edit'), edit_label_path(label), class: 'btn btn-success btn-sm' %></td>
+        <td><%= link_to t('link.Destroy'), label_path(label), class: 'btn btn-danger btn-sm', method: :delete, data: {confirm: t('message.label.Are you sure?', label: label.name)} %></td>
+      </tr>
+    <% end %>
+  </div>
+  <%= page_entries_info @labels %>
+</table>
+<div class="page">
+  <%= paginate @labels %>
+</div>
