@@ -29,8 +29,14 @@ class Task < ApplicationRecord
     where(status: status)
   }
 
+  scope :search_label, ->(label) {
+    return if label.blank?
+    joins(:labels).where(labels: {id: label})
+  }
+
   scope :search, ->(search_task_params) {
     search_title(search_task_params[:title]).
-    search_status(search_task_params[:status])
+    search_status(search_task_params[:status]).
+    search_label(search_task_params[:label])
   }
 end

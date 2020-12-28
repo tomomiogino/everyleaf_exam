@@ -9,6 +9,10 @@
     <%= f.select :status, Task.statuses.keys.map { |k| [t("task.status.#{k}"), k] }, { include_blank: true, selected: @search_task_params[:status] }, {class: "form-control"} %>
   </div>
   <div class="form-group">
+    <%= f.label :label, t('tasks.label') %>
+    <%= f.select :label, current_user.labels.pluck(:name, :id), { include_blank: true, selected: @search_task_params[:label] }, {class: "form-control"} %>
+  </div>
+  <div class="form-group">
     <%= f.submit t('button.Search'), class: 'btn btn-info' %>
     <%= link_to t('link.Clear'), request.params.merge(task: nil), class: 'btn btn-default btn-xs' %>
   </div>

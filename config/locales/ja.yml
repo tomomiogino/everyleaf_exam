@@ -230,6 +230,7 @@ ja:
     Index: タスク一覧
     New Task: タスクを新規作成する
     Show: タスク詳細
+    label: ラベル
   users:
     New User: 新規ユーザー登録
     Show User: "%{user}さんのページ"
