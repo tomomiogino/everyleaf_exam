@@ -1,5 +1,7 @@
 class Task < ApplicationRecord
-  belongs_to :user, optional: true
+  belongs_to :user
+  has_many :labelings, dependent: :destroy
+  has_many :labels, through: :labelings, source: :label
 
   with_options presence: true do
     validates :title, length: { maximum: 100 }
@@ -9,6 +11,7 @@ class Task < ApplicationRecord
   end
 
   validate :date_not_before_now
+
   enum status: {waiting: 0, working: 1, completed: 2}
   enum priority: {high: 0, middle: 1, low: 2}
 
