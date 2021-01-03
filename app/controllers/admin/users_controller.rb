@@ -2,9 +2,10 @@ class Admin::UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user
   before_action :require_admin
-  
+
   def index
     @users = User.all.includes(:tasks)
+    @users = @users.page(params[:page]).per(8)
   end
 
   def new

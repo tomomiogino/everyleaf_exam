@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user
   before_action :correct_user_with_task, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     @tasks = current_user.tasks
     @search_task_params = search_task_params
@@ -51,7 +51,7 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:title, :content, :deadline, :status, :priority)
+    params.require(:task).permit(:title, :content, :deadline, :status, :priority, { label_ids: [] })
   end
 
   def set_task
@@ -59,6 +59,6 @@ class TasksController < ApplicationController
   end
 
   def search_task_params
-    params.fetch(:task, {}).permit(:title, :status)
+    params.fetch(:task, {}).permit(:title, :status, :label)
   end
 end

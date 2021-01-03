@@ -35,6 +35,16 @@
         <th><%= Task.human_attribute_name(:updated_at) %></th>
         <td><%= l @task.updated_at %></td>
       </tr>
+      <tr>
+        <th><%= Label.human_attribute_name(:name) %></th>
+        <td>
+          <ul class="list-inline">
+            <% @task.labels.each do |label| %>
+              <li class="label_item"><%= label.name %></li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
     </tbody>
   </table>
 <%= link_to t('link.Edit'), edit_task_path, class: 'btn btn-success' %>

@@ -61,7 +61,7 @@ RSpec.describe 'ユーザー管理機能', type: :system do
       end
     end
   end
-  
+
   describe '管理画面のテスト' do
     before do
       visit new_session_path
@@ -78,7 +78,7 @@ RSpec.describe 'ユーザー管理機能', type: :system do
         expect(page).to have_content 'admin'
       end
       it 'ユーザーの新規登録ができる' do
-        click_on '新規作成'
+        click_on '新規ユーザー登録'
         visit new_admin_user_path
         fill_in '名前', with: 'createduser'
         fill_in 'メールアドレス', with: 'user@user.com'

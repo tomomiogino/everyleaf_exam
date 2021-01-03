@@ -222,11 +222,15 @@ ja:
       New: 新規ユーザー登録
       not have an account: ユーザー登録がまだの方はこちら
       Index: ユーザー一覧
+    label:
+      Index: ラベル一覧
+      New: ラベル新規作成
   tasks:
     Editing Task: タスクを編集する
     Index: タスク一覧
     New Task: タスクを新規作成する
     Show: タスク詳細
+    label: ラベル
   users:
     New User: 新規ユーザー登録
     Show User: "%{user}さんのページ"
@@ -238,10 +242,16 @@ ja:
     New Session: ログイン
     email: メールアドレス
     password: パスワード
+  labels:
+    Editing Label: ラベルを編集する
+    Index: ラベル一覧
+    New Label: ラベルを新規作成する
   message:
     Are you sure?: "タスク『%{title}』を本当に削除してよろしいですか？"
     user:
       Are you sure?: "ユーザー『%{user}』を本当に削除してよろしいですか？"
+    label:
+      Are you sure?: "label『%{label}』を本当に削除してよろしいですか？"
   notice:
     create: "タスク『%{task}』を新規登録しました！"
     update: "タスク『%{task}』を更新しました！"
@@ -253,6 +263,10 @@ ja:
         create: "ユーザー『%{user}さん』を登録しました！"
         update: "ユーザー『%{user}さん』を更新しました！"
         destroy: "ユーザー『%{user}さん』を削除しました！"
+    label:
+      create: "ラベル『%{label}』を新規登録しました！"
+      update: "ラベル『%{label}』を更新しました！"
+      destroy: "ラベル『%{label}』を削除しました！"
   alert:
     create: "登録に失敗しました"
     update: "更新に失敗しました"
@@ -265,6 +279,9 @@ ja:
       destroy: "アカウント削除に失敗しました 管理者がいなくなってしまうので実行できません"
       logged in: "ログイン済です"
       Another user: "アクセス権限がありません"
+    label:
+      create: "ラベル登録に失敗しました"
+      update: "ラベル更新に失敗しました"
   success:
     sessions:
       create: "ログインしました！"
